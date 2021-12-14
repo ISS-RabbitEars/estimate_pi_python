@@ -22,20 +22,22 @@ frps=60
 sec=3*60
 
 fig, a=plt.subplots()
+N=1000
 nr=0
 nb=0
 per='%'
 
 def run(frame):
 	global nr,nb
-	x=rnd.random()
-	y=rnd.random()
-	if math.sqrt(x**2+y**2)<=1:
-		plt.plot([x],[y],'ro',markersize=1)
-		nr+=1
-	else:
-		plt.plot([x],[y],'bo',markersize=1)
-		nb+=1
+	for i in range(N):
+		x=rnd.random()
+		y=rnd.random()
+		if math.sqrt(x**2+y**2)<=1:
+			plt.plot([x],[y],'ro',markersize=1)
+			nr+=1
+		else:
+			plt.plot([x],[y],'bo',markersize=1)
+			nb+=1
 	pi=4*nr/(nr+nb)
 	plt.suptitle(r'$\pi \approx$ %f' % pi)
 	pe=100*abs(pi-math.pi)/math.pi
